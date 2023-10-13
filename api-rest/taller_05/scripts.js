@@ -14,26 +14,15 @@ function personaje(texto) {
     contenedor.appendChild( div )
 }
 
-function obtener_personaje(id) {
-    return new Promise((resolve, reject) => {
-        fetch(`${API}${id}`)
-            .then((data) => resolve(data.json()))
-            .catch((error) => reject(`[error]: ${error}`))
-    })
+async function obtener_personaje(id) {
+    try {
+        let response = await fetch(`${API}${id}`)
+        return personaje( await response.json() )
+    } catch(error) {
+        console.error(`[error]: ${error}`)
+    }
 }
 
-let ids = []
 for (let i=1; i<=100; i++) {
-    ids.push(i)
+    obtener_personaje(i)
 }
-
-let promesas = ids.map( id => obtener_personaje(id) )
-
-// Promesas Encadenadas
-Promise
-    .all( promesas )
-    .then( data => {
-        for (let i=0; i<data.length; i++) {
-            personaje( data[i] )
-        }
-    } )
