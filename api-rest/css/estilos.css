@@ -1,0 +1,33 @@
+body {
+    background-color: seashell;
+}
+
+h1 {
+    color: brown;
+    font-size: 22px;
+}
+
+#contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+#contenedor div {
+    width: 210px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    justify-items: center;
+}
+
+#contenedor h1 {
+    width: auto;
+    text-align: center;
+}
+
+#contenedor img {
+    height: 200px;
+}
