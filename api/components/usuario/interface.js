@@ -11,7 +11,7 @@ routes.post('/', function(req, res){
 })
 
 routes.get('/', function(req, res){
-    const filtro = req.body || null
+    const filtro = req.query || null
     controller.obtenerUsuario( filtro )
         .then( (data) => response.success(req, res, data, 200) )
         .catch( (error) => response.error(req, res, error, 400) )
