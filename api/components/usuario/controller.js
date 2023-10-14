@@ -23,8 +23,15 @@ function actualizarUsuario( dato ) {
     })
 }
 
+function eliminarUsuario( dato ) {
+    return new Promise((resolve, reject) => {
+        resolve( storage.eliminar( dato ) )
+    })    
+}
+
 module.exports = {
     agregarUsuario,
     obtenerUsuario,
     actualizarUsuario,
+    eliminarUsuario
 }

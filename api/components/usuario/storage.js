@@ -26,9 +26,14 @@ async function actualizarUsuario(dato) {
     return resultado
 }
 
+async function eliminarUsuario(dato) {
+    const resultado = await Model.deleteOne( {usuario: dato.usuario} )
+    return resultado
+}
 
 module.exports = {
     agregar:agregarUsuario,
     obtener:obtenerUsuario,
     actualizar:actualizarUsuario,
+    eliminar:eliminarUsuario
 }
