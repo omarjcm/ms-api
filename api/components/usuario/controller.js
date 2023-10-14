@@ -12,7 +12,19 @@ function obtenerUsuario( filtro ) {
     })
 }
 
+function actualizarUsuario( dato ) {
+    return new Promise((resolve, reject) => {
+        let usuario = {
+            usuario: dato.usuario,
+            nombre: dato.nombre,
+            apellido: dato.apellido
+        }
+        resolve( storage.actualizar( usuario ) )
+    })
+}
+
 module.exports = {
     agregarUsuario,
     obtenerUsuario,
+    actualizarUsuario,
 }
