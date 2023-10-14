@@ -6,5 +6,11 @@
     </head>
     <body>
         <h1>API Websockets</h1>
+        <script>
+            var socket = io.connect('http://localhost:3000/', {
+                forceNet: true
+            })
+            socket.on('mensaje', (data)=>console.log(data))
+        </script>
     </body>
 </html>
