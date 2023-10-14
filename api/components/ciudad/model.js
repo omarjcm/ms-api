@@ -6,9 +6,13 @@ const req_string = {
     required: true,
 }
 
-const pais_schema = new Schema({
+const ciudad_schema = new Schema({
     nombre: req_string,
+    pais: {
+        type: Schema.ObjectId,
+        ref: 'pais',
+    },
 })
 
-const model = mongoose.model('pais', pais_schema)
+const model = mongoose.model('ciudad', ciudad_schema)
 module.exports = model
