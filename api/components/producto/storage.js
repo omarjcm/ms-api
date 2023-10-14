@@ -3,7 +3,7 @@ const model = require('./model')
 function get_producto( filtro_producto ) {
     let filtro = {}
     if (filtro_producto) {
-        filtro = { cedula: filtro_producto }
+        filtro = { codigo: filtro_producto }
     }
     const objeto = model.find( filtro )
     return objeto

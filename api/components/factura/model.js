@@ -47,7 +47,7 @@ const factura_schema = new Schema({
     valor_subtotal: req_number,
     valor_iva: req_number,
     valor_total: req_number,
-    factura_detalle: [factura_detalle_schema]
+    factura_detalle: [ factura_detalle_schema ]
 }, {
     timestamps: true,
 })

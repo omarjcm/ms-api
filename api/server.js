@@ -10,6 +10,7 @@ db( config.DB_URL )
 
 app.use( body_parser.json() )
 app.use( body_parser.urlencoded({extended: false}) )
+app.use('/', express.static('public'))
 
 routes( app )
 
