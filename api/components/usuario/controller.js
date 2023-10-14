@@ -6,6 +6,13 @@ function agregarUsuario( dato ) {
     })
 }
 
+function obtenerUsuario( filtro ) {
+    return new Promise((resolve, reject) => {
+        resolve( storage.obtener( filtro ) )
+    })
+}
+
 module.exports = {
     agregarUsuario,
-} 
+    obtenerUsuario,
+}

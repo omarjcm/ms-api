@@ -10,5 +10,12 @@ routes.post('/', function(req, res){
         .catch( (error) => response.error(req, res, error, 400) )
 })
 
+routes.get('/', function(req, res){
+    const filtro = req.body || null
+    controller.obtenerUsuario( filtro )
+        .then( (data) => response.success(req, res, data, 200) )
+        .catch( (error) => response.error(req, res, error, 400) )
+})
+
 module.exports = routes
 
