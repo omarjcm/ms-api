@@ -1,18 +1,9 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList, GraphQLNonNull } = require('graphql');
-const mongoose = require('mongoose');
 const cors = require('cors');
 
-mongoose.connect('mongodb+srv://gpizarro:inexcelsisdeo@cluster0.jxysv4e.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const ProductModel = mongoose.model('Product', {
-  name: String,
-  value: Number,
-});
+const ProductModel = require('./db')
 
 const ProductType = new GraphQLObjectType({
   name: 'Product',
