@@ -1,25 +1,31 @@
 import React from 'react';
 import SingleMovie from '../components/SingleMovie';
+import { gql, useQuery } from '@apollo/client'
 
-const movies = [
-    {name: 'John Wick 1', genre: 'Action', year: 2017},
-    {name: 'John Wick 2', genre: 'Action', year: 2019},
-    {name: 'John Wick 3', genre: 'Action', year: 2021},
-    {name: 'John Wick 4', genre: 'Action', year: 2022},
-    {name: 'John Wick', genre: 'Action', year: 2019},
-    {name: 'John Wick', genre: 'Action', year: 2019},
-    {name: 'John Wick', genre: 'Action', year: 2019},
-    {name: 'John Wick', genre: 'Action', year: 2019}
-]
+const listAllMovies = gql`
+    query {
+        listMovies {
+            name
+            genre
+            year
+        }
+    }
+`
 
 const Movies = () => {
+    const { loading, error, data } = useQuery( listAllMovies )
+
+    if (loading) return <p className='loading'>We are loading your movies</p>
+    if (error) return <p className='error'>Cannot fetch your movies : {error.message}</p>
+
     return ( 
         <div className='movies'>
-            {movies.map((data) => {
+            {data.listMovies.map((movie, index) => {
                 return <SingleMovie
-                    movieName={data.name}
-                    movieGenre={data.genre}
-                    movieYear={data.year}
+                    key={index}
+                    movieName={movie.name}
+                    movieGenre={movie.genre}
+                    movieYear={movie.year}
                 />
             })}
         </div>
