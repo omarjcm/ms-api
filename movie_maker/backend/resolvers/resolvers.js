@@ -5,7 +5,6 @@ const rootValue = {
         return model.find({})
     },
     addMovie: (data) => {
-
         let objeto = new model({
             name: data.name,
             genre: data.genre,
