@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import pkg from '../package.json'
 
 import { create_roles } from './libs/initialSetup'
+import userRoutes from './routes/user.routes'
 
 const app = express()
 //create_roles()
@@ -22,5 +23,7 @@ app.get('/', (req, res) => {
 
 app.use( express.json() )
 app.use( express.urlencoded({extended:false}) )
+
+app.use('/users', userRoutes)
 
 export default app
