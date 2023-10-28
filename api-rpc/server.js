@@ -14,18 +14,18 @@ async function main() {
     const userProto = grpc.loadPackageDefinition(packageDefinition)
     const server = new grpc.Server()
 
-    let users = [
-        { name: "Luis Armijos", email: "larmijos@ups.edu.ec", age: 48 }
-    ]
+    const users = []
 
     server.addService(userProto.UserService.service, {
-        getUsers : (_, callback) => {
-            callback(null, {users})
+        getUsers: (_, callback) => {
+            console.log(users)
+            callback(null, {users});
         },
-        addUser : (call, callback) => {
-            const user = call.request
-            users.push(user)
-            callback(null, user)
+        addUser: (call, callback) => {
+            const user = call.request;
+            console.log(user)
+            users.push(user);
+            callback(null, user);
         }
     })
 
