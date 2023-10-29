@@ -1,18 +1,18 @@
 import grpc from '@grpc/grpc-js'
-import protoloader from '@grpc/proto-loader'
+import protoLoader from '@grpc/proto-loader'
 
 const PROTO_FILE = './proto/user.proto'
 
-const packageDefinition = protoloader.loadSync(PROTO_FILE, {
+const packageDefinition = protoLoader.loadSync(PROTO_FILE, {
     keepCase: true,
     longs: String,
     enums: String,
     arrays: true
 })
 
-const UserService = grpc.loadPackageDefinition(packageDefinition).UserService
+const userProto = grpc.loadPackageDefinition(packageDefinition)
 
-const client = new UserService(
+const client = new userProto.UserService(
     "localhost:3043",
     grpc.credentials.createInsecure()
 )
